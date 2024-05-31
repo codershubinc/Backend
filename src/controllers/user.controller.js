@@ -1,7 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { User } from "../models/user.model.js";
-import { uploadOnCloudinary } from "../utils/clowdenary.js";
+import { uploadOnCloudinary, deleteOnCloudinary } from "../utils/clowdenary.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
@@ -81,7 +81,9 @@ const registerUser = asyncHandler(async (req, res) => {
             email,
             password,
             avatar: avatar.url,
-            coverImage: coverImage?.url || ''
+            avatarId: avatar.public_id,
+            coverImage: coverImage?.url || '',
+            coverImageId: coverImage?.public_id || ''
         }
     )
 
@@ -336,12 +338,21 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
         throw new ApiError(500, "Something went wrong while uploading avatar")
 
     }
+    console.log("avatar updated", avatar);
+
+    console.log('deleting old avatar', req.user?.avatarId);
+    const deletedAvatar = await deleteOnCloudinary(req.user?.avatarId)
+    console.log("deleted avatar", deletedAvatar);
+
+
+
 
     const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set: {
-                avatar: avatar.url
+                avatar: avatar.url,
+                avatarId: avatar.public_id
             }
         }, { new: true }
     ).select("-password -refreshToken")
@@ -370,11 +381,18 @@ const updateUserCoverImage = asyncHandler(async (req, res) => {
 
     }
 
+    console.log("coverImage updated", coverImage);
+
+    console.log('deleting old coverImage', req.user?.coverImageId);
+    const deletedCoverImage = await deleteOnCloudinary(req.user?.coverImageId)
+    console.log("deleted coverImage", deletedCoverImage);
+
     const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set: {
-                coverImage: coverImage.url
+                coverImage: coverImage.url,
+                coverImageId: coverImage.public_id
             }
         }, { new: true }
     ).select("-password -refreshToken")

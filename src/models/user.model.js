@@ -29,8 +29,15 @@ const userSchema = new Schema(
             type: String,//clownery avatar url
             required: true
         },
+        avatarId:{
+            type: String,
+            required: true
+        },
         coverImage: {
             type: String, //clownery cover image url 
+        },
+        coverImageId:{
+            type: String
         },
         watchHistory: [
             {
