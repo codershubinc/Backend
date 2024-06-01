@@ -1,16 +1,27 @@
-import mongoose, { isValidObjectId } from "mongoose"
-import {Tweet} from "../models/tweet.model.js"
-import {User} from "../models/user.model.js"
-import {ApiError} from "../utils/ApiError.js"
-import {ApiResponse} from "../utils/ApiResponse.js"
-import {asyncHandler} from "../utils/asyncHandler.js"
+import { Tweet } from "../models/tweet.model.js"
+import { asyncHandler } from "../utils/asyncHandler.js"
+import { ApiResponse } from "../utils/responce.api.js"
 
 const createTweet = asyncHandler(async (req, res) => {
+    console.log('creating a tweet for you');
     //TODO: create tweet
+    console.log('req.body', req.body);
+    const { tweet } = req.body
+    const tweetSend = await Tweet.create(
+        {
+            content: tweet,
+            owner: req.user
+        }
+    )
+    console.log('tweetSend', tweetSend);
+    return res.status(201).json(
+        new ApiResponse(201, tweetSend, "Tweet created successfully")
+    )
+
 })
 
 const getUserTweets = asyncHandler(async (req, res) => {
-    // TODO: get user tweets
+    // TODO: get user tweets 
 })
 
 const updateTweet = asyncHandler(async (req, res) => {

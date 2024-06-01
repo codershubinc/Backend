@@ -1,8 +1,8 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/ApiError.js";
+import { ApiError } from "../utils/error.api.js";
 import { User } from "../models/user.model.js";
-import { uploadOnCloudinary, deleteOnCloudinary } from "../utils/clowdenary.js";
-import { ApiResponse } from "../utils/ApiResponse.js";
+import { uploadOnCloudinary, deleteOnCloudinary, resizeImage } from "../utils/clowdenary.js";
+import { ApiResponse } from "../utils/responce.api.js";
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 
@@ -23,7 +23,6 @@ const generateAccessAndRefreshToken = async (userId) => {
         throw new ApiError(500, "Something went wrong while generating access and refresh token")
     }
 }
-
 
 const registerUser = asyncHandler(async (req, res) => {
     //get user details from frontend
@@ -356,6 +355,8 @@ const updateUserAvatar = asyncHandler(async (req, res) => {
             }
         }, { new: true }
     ).select("-password -refreshToken")
+    const resizedImage = resizeImage(user?.avatarId)
+    console.log("resizedImage", resizedImage);
     return res.status(200).json(
         new ApiResponse(
             200,

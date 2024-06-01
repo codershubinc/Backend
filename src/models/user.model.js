@@ -26,7 +26,7 @@ const userSchema = new Schema(
             index: true
         },
         avatar: {
-            type: String,//clownery avatar url
+            type: String,//cloudnery avatar url
             required: true
         },
         avatarId:{
@@ -39,7 +39,7 @@ const userSchema = new Schema(
         coverImageId:{
             type: String
         },
-        watchHistory: [
+        watchHistory: [ 
             {
                 type: Schema.Types.ObjectId,
                 ref: "Video"
@@ -47,7 +47,8 @@ const userSchema = new Schema(
         ],
         password: {
             type: String,
-            required: [true, "Please provide a password"],
+            required: [true, "Please provide a password"], 
+
         },
         refreshToken: {
             type: String

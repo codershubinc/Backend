@@ -8,6 +8,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
+
 const uploadOnCloudinary = async (localFilePath) => {
     try {
         if (!localFilePath) return null
@@ -15,8 +16,8 @@ const uploadOnCloudinary = async (localFilePath) => {
         const response = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "auto"
         })
-        // file has been uploaded successfull
-        //console.log("file is uploaded on cloudinary ", response.url);
+        // file has been uploaded successful
+        console.log("file is uploaded on cloudinary successfully ", response.url);
         fs.unlinkSync(localFilePath)
         return response;
 
@@ -34,8 +35,29 @@ const deleteOnCloudinary = async (publicId) => {
     } catch (error) {
         return null
     }
+
+}
+
+const resizeImage = (id) => {
+
+    try {
+        const response = cloudinary.image(
+            `${id}`,
+            {
+                transformation: [
+                    { width: 500, crop: "scale" },
+                    { height: 500, crop: "scale" }, 
+                    { quality: "auto" },
+                ]
+            },
+
+        )
+        return response
+    } catch (error) {
+        console.log('error in resize image', error);
+
+    }
 }
 
 
-
-export { uploadOnCloudinary , deleteOnCloudinary }
+export { uploadOnCloudinary, deleteOnCloudinary, resizeImage }

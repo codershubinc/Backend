@@ -29,6 +29,9 @@ console.log('app.js');
 // routes declaration
 app.use("/api/v1/users", router)
 
+import tweetRouter from './routes/tweet.routes.js'
+
+app.use("/api/v1/tweets", tweetRouter)
 
 
 
