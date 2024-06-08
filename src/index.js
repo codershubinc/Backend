@@ -10,7 +10,7 @@ dotenv.config({
 
 connectDB()
     .then(() => {
-        app.listen(process.env.PORT || 8000, () => {
+        app.listen("https://backend-tenten.vercel.app", () => {
             console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
         })
 
