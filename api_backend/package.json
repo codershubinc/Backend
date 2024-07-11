@@ -1,0 +1,18 @@
+{
+  "name": "api_backend",
+  "version": "1.0.0",
+  "description": "api hub",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev ",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "swapnil ingle",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
