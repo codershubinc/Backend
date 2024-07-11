@@ -33,6 +33,8 @@ import tweetRouter from './routes/tweet.routes.js'
 
 app.use("/api/v1/tweets", tweetRouter)
 
+import apiTestRouter from './routes/testapi.routes.js'
 
+app.use("/api/v1/test-api", apiTestRouter)
 
 export { app }
