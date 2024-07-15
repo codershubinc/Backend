@@ -6,8 +6,8 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 app.get("/api", (req, res) => {
-    res.send(
-        // dummy user info
+    res.json(
+        
         {
             name: "test user",
             age: 25,
