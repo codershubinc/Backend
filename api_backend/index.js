@@ -45,8 +45,14 @@ app.get("/api/json", (req, res) => {
     res.json(packageJsonApi)
 })
 app.get("/api/randImage", (req, res) => {
-    res.json(
-        Random.Avatar({ avatarStyle: 'auto', query: 'auto', imageType: 'svg', queryLength: 4 })
+    const imageUrl = Random.Avatar({ avatarStyle: 'auto', query: 'auto', imageType: 'svg', queryLength: 4 })
+    console.log('request', req);
+
+    res.json({
+        image: imageUrl,
+        imageType: 'svg'
+    }
+
     )
 })
 app.listen(3001)
