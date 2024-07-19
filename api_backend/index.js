@@ -1,4 +1,5 @@
 const express = require('express');
+import Random from './randImage';
 
 const app = express();
 const packageJsonApi = {
@@ -43,5 +44,10 @@ app.get("/api", (req, res) => {
 app.get("/api/json", (req, res) => {
     res.json(packageJsonApi)
 })
-app.listen(3001);
+app.get("/api/randImage", (req, res) => {
+    res.json(
+        Random.Avatar({ avatarStyle: 'auto', query: 'auto', imageType: 'svg', queryLength: 4 })
+    )
+})
+app.listen(3001)
 
