@@ -54,7 +54,17 @@ app.get("/api/randImage", cors(coreOptions), (req, res) => {
     res.json(
         {
             image: imageUrl,
-            imageType: 'svg' 
+            imageType: 'svg'
+        }
+    )
+})
+app.get("/api/randUser", cors(coreOptions), (req, res) => {
+    const userData = Random.User()
+    res.json(
+        {
+            image: userData,
+            success: true,
+            successCode: 200
         }
     )
 })
