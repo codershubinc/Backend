@@ -3,13 +3,22 @@
     "builds": [
         {
             "src": "src/index.ts",
-            "use": "@vercel/ts-node"
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": ["src/**/*.ts"],
+                "excludeFiles": ["node_modules/**"]
+            }
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "index.ts"
+            "dest": "/src/index.ts"
         }
-    ]
+    ],
+    "functions": {
+        "api/**/*.ts": {
+            "maxDuration": 10
+        }
+    }
 }
