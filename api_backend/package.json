@@ -4,10 +4,7 @@
   "description": "api hub",
   "main": "index.js",
   "scripts": {
-    "test": "dev ",
-    "dev": "node index.js",
-    "start": "node index.js",
-    "build": "node index.js"
+    "start": "node index.js"
   },
   "keywords": [
     "api"
