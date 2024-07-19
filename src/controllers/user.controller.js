@@ -25,16 +25,6 @@ const generateAccessAndRefreshToken = async (userId) => {
 }
 
 const registerUser = asyncHandler(async (req, res) => {
-    //get user details from frontend
-    //validation -not empty
-    // is user already registered
-    //check for image  , check for avatar
-    //upload them to cloudinary
-    //create user object- create entry in db  
-    //remove pass and refresh token field from user object
-    //check if user creation
-    //return res 
-
 
     const { username, email, password, fullName } = req.body
     if ([username, email, password, fullName].some((field) => field?.trim() === "")) {
@@ -113,7 +103,7 @@ const loginUser = asyncHandler(async (req, res) => {
     // username or email
     //find the user
     //password check
-    //access and referesh token
+    //access and refresh token
     //send cookie
 
     const { email, username, password } = req.body

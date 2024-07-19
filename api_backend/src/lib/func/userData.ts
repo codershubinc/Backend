@@ -80,9 +80,11 @@ const avatarArts = [
     'Thumbs'
 
 ]
-
+ 
 
 export {
     userData,
     avatarArts
 }
+
+

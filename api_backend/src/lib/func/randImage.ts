@@ -37,7 +37,7 @@ const alphabets = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ]
 
-class randomNumbers {
+class random {
 
     MinToMax(min: number, max: number) {
         return Math.floor(Math.random() * (max - min + 1) + min)
@@ -80,12 +80,12 @@ class randomNumbers {
         if (avatar === 'auto') avatar = ((this.FromAnArray(avatarArts)).replaceAll(' ', '-')).toLowerCase()
         if (image === 'auto') image = 'svg'
 
-        return `https://api.dicebear.com/9.x/${avatar}/${image}?seed=${autoQuery} `
+        return `https://api.dicebear.com/9.x/${avatar}/${image}?seed=${autoQuery}`
     }
 
 
 
 }
 
-const Random = new randomNumbers();
+const Random = new random();
 export default Random
