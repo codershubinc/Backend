@@ -1,7 +1,12 @@
 const express = require('express');
 import Random from './randImage';
+import cors from 'cors';
 
 const app = express();
+const coreOptions = {
+    origin: ['http://localhost:3000'],
+    optionsSuccessStatus: 200
+}
 const packageJsonApi = {
     "name": "api_backend",
     "version": "1.0.0",
@@ -24,10 +29,10 @@ const packageJsonApi = {
 }
 
 
-app.get("/", (req, res) => {
+app.get("/", cors(), (req, res) => {
     res.send("Hello World!");
 });
-app.get("/api", (req, res) => {
+app.get("/api", cors(coreOptions), (req, res) => {
     res.json(
 
         {
@@ -41,18 +46,17 @@ app.get("/api", (req, res) => {
         }
     )
 })
-app.get("/api/json", (req, res) => {
+app.get("/api/json", cors(coreOptions), (req, res) => {
     res.json(packageJsonApi)
 })
-app.get("/api/randImage", (req, res) => {
+app.get("/api/randImage", cors(coreOptions), (req, res) => {
     const imageUrl = Random.Avatar({ avatarStyle: 'auto', query: 'auto', imageType: 'svg', queryLength: 4 })
-    console.log('request', req);
-
-    res.json({
-        image: imageUrl,
-        imageType: 'svg'
-    }
-
+    res.json(
+        {
+            image: imageUrl,
+            imageType: 'svg',
+            request: req
+        }
     )
 })
 app.listen(3001)
