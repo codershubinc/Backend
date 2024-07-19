@@ -3,7 +3,7 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true, limit: '16kb' }));
 
@@ -17,5 +17,5 @@ app.listen(3000, () => {
 
 import RandomUserRoutes from './src/routes/randomUser/randomUser.router.js';
 app.use('/v0.1/random_user', RandomUserRoutes)
-import RandomImageRoutes from './src/routes/random_images/randomImage.router.js';
+import RandomImageRoutes from './src/routes/randomImages/randomImage.router.js';
 app.use('/v0.1/random_image', RandomImageRoutes)
