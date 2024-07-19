@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const randomUser_controller_1 = require("../../controller/randomUser/randomUser.controller");
+const router = (0, express_1.Router)();
+router.route("/:any/:query").get(randomUser_controller_1.RandomUserGeneratorError);
+router.route("/").get(randomUser_controller_1.RandomUserGanarator);
+router.route("/big").get(randomUser_controller_1.RandomBigUserGanarator);
+router.route("/big0").get(randomUser_controller_1.RandomBig0UserGanarator);
+exports.default = router;

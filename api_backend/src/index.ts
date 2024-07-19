@@ -15,18 +15,19 @@ app.use(express.urlencoded({
 }))
 
 app.use(express.static('public'))
-
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log('server is running on port 3000')
 })
+
+
 function helloworld() {
     return 'hello world test'
 }
 app.use('/' , helloworld )
 
-import RandomImageGanaratorRoutes from './routes/randomImage/randomImage.routes'
+import RandomImageGanaratorRoutes from './routes/randomImage/randomImage.routes.js'
 
 app.use('/v0.1/random_image', RandomImageGanaratorRoutes)
 
-import RandomUser from './routes/randomUser/randomUser.routes'
+import RandomUser from './routes/randomUser/randomUser.routes.js'
 app.use('/v0.1/random_user', RandomUser)
