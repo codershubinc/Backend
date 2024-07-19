@@ -54,8 +54,7 @@ app.get("/api/randImage", cors(coreOptions), (req, res) => {
     res.json(
         {
             image: imageUrl,
-            imageType: 'svg',
-            request: req
+            imageType: 'svg' 
         }
     )
 })
