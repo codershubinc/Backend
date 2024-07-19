@@ -19,8 +19,10 @@ app.use(express.static('public'))
 app.listen(3000, () => {
     console.log('server is running on port 3000')
 })
-
-
+function helloworld() {
+    return 'hello world'
+}
+app.use('/' , helloworld )
 
 import RandomImageGanaratorRoutes from './routes/randomImage/randomImage.routes'
 
