@@ -17,7 +17,7 @@ app.use(express.urlencoded(
 ));
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.json(homePageApi)
 });
 
 app.listen(3000, () => {
@@ -30,4 +30,5 @@ app.use('/v0.1/random_user', cors(), RandomUserRoutes)
 
 
 import RandomImageRoutes from './src/routes/randomImages/randomImage.router.js';
+import { homePageApi } from './src/controllers/homePageApi/homePageApi.controller.js';
 app.use('/v0.1/random_image', cors(), RandomImageRoutes)
