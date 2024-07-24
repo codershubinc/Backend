@@ -1,6 +1,5 @@
 import express from 'express';
-import cors from 'cors';
-import { homePageApi } from './src/controllers/homePageApi/homePageApi.controller.js';
+import cors from 'cors'; 
 
 const app = express();
 const corsRes = {
@@ -30,5 +29,4 @@ app.use('/v0.1/random_user', cors(), RandomUserRoutes)
 
 
 import RandomImageRoutes from './src/routes/randomImages/randomImage.router.js';
-import { homePageApi } from './src/controllers/homePageApi/homePageApi.controller.js';
 app.use('/v0.1/random_image', cors(), RandomImageRoutes)

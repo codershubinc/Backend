@@ -1,5 +1,5 @@
-import { asyncHandler } from "../../utils/asyncHandler";
-import { ApiResponse } from "../../utils/responce/api/responce.api";
+import { asyncHandler } from "../../utils/asyncHandler.js";
+import { ApiResponse } from "../../utils/responce/api/responce.api.js";
 
 const homePageApi = asyncHandler(async (req, res) => {
     const apiResponce = {
