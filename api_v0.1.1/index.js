@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { homePageApi } from './src/controllers/homePageApi/homePageApi.controller.js';
 
 const app = express();
 const corsRes = {
