@@ -16,10 +16,9 @@ app.use(express.urlencoded(
         limit: '16kb'
     }
 ));
+import homePageRoutes from './src/routes/homePage.routes.js';
 
-app.get('/', (req, res) => {
-    res.json(homePageApi)
-});
+app.use('/', cors(), homePageRoutes)
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
