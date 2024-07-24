@@ -10,6 +10,7 @@ import { ApiResponse } from "../../utils/responce/api/responce.api.js"
 const RandomUserGanarator = asyncHandler(async (req, res) => {
 
     const randomUser = Random.FromAnArray(smallUsers)
+    randomUser.avatar = Random.Avatar({ avatarStyle: 'auto' })
     const randomUserData = {
         user: randomUser
     }
@@ -41,6 +42,7 @@ const RandomUserGeneratorError = asyncHandler(async (req, res) => {
 
 const RandomBigUserGanarator = asyncHandler(async (req, res) => {
     const randomUser = Random.FromAnArray(users)
+    randomUser.avatar = Random.Avatar({ avatarStyle: 'auto' })
     const randomUserData = {
         user: randomUser
     }
@@ -56,6 +58,7 @@ const RandomBigUserGanarator = asyncHandler(async (req, res) => {
 
 const RandomBig0UserGanarator = asyncHandler(async (req, res) => {
     const randomUser = Random.FromAnArray(bigUsers)
+    randomUser.avatar = Random.Avatar({ avatarStyle: 'auto' })
     const randomUserData = {
         user: randomUser
     }
