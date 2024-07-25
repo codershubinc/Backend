@@ -1,5 +1,5 @@
 import  readTextFile from "../../../../../../func/fetchTXTfilesAsArray.js"
-import { dirname, join } from 'path';
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
