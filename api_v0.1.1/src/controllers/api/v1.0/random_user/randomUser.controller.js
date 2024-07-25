@@ -1,4 +1,4 @@
-import data from "./randomContrySelector.js";
+import {data} from "../../../../lib/func/randomContrySelector.js";
 
 
 const RandomUserGanarator = async (req, res) => {
