@@ -1,15 +1,27 @@
 import Random from "./Random.js"
 const country = [
-    'US'
+    "AU",
+    "BR",
+    "CA",
+    "CH",
+    "DE",
+    "DK",
+    "ES",
+    "GB",
+    "IN",
+    "US",
 ]
 
-const RandomCountrySelector = Random.FromAnArray(country)
 
-
+let Rand
 // Function to dynamically import the module
 const loadModule = async () => {
+    const RandomCountrySelector = Random.FromAnArray(country)
+    console.log('R', RandomCountrySelector);
+
+    Rand = RandomCountrySelector
     try {
-        const modulePath = `../data/api/v1.0/random_user/country/${RandomCountrySelector}/index.js`;
+        const modulePath = `../data/api/v1.0/country/${RandomCountrySelector}/index.js`;
         const data = await import(modulePath);
         return data;
     } catch (error) {
@@ -17,9 +29,9 @@ const loadModule = async () => {
         return null
     }
 };
-const data = await loadModule()
+
 
 export {
-    data,
-    RandomCountrySelector
+    loadModule as data,
+    Rand as RandomCountrySelector
 }

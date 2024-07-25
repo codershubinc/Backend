@@ -3,7 +3,7 @@ import { ApiResponse } from "../../../../utils/responce/api/responce.api.js"
 
 
 const RandomAddressGanarator = async (req, res) => {
-    const randomAddressData = randomAddress()
+    const randomAddressData = await randomAddress()
     if (!randomAddressData) {
         return res.status(500).json(
             new ApiResponse(

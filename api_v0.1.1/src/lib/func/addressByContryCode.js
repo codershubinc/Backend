@@ -1,10 +1,10 @@
-import {data , RandomCountrySelector} from "./randomContrySelector.js"
 import Random from "./Random.js"
+import  data from './contryByInfoContryCode.js'
 
 
 
-const randomAddress = async () => {
-    let addressData = await data()
+const randomAddress = async (contryCode) => {
+    let addressData = await data(contryCode)
     // console.log('addressData', addressData);
     
 
@@ -21,7 +21,7 @@ const randomAddress = async () => {
             name: Random.FromAnArray(addressData?.streets),
             number: Random.MinToMax(1, 1000),
         },
-        country : RandomCountrySelector
+        country : contryCode
     }
 
 }
