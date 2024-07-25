@@ -1,7 +1,7 @@
-import Random from '../../lib/func/Random.js'
-import { asyncHandler } from "../../utils/asyncHandler.js"
-import { ApiError } from "../../utils/responce/api/error.api.js"
-import { ApiResponse } from "../../utils/responce/api/responce.api.js"
+import Random from '../../../../lib/func/Random.js'
+import { asyncHandler } from "../../../../utils/asyncHandler.js"
+import { ApiError } from "../../../../utils/responce/api/error.api.js"
+import { ApiResponse } from "../../../../utils/responce/api/responce.api.js"
 
 
 const RandomImageGanarator = asyncHandler(async (req, res) => {

@@ -4,7 +4,7 @@ import {
     RandomUserGeneratorError,
     RandomBigUserGanarator,
     RandomBig0UserGanarator
-} from '../../controllers/randomUser/randomUser.controller.js'
+} from '../../../../controllers/api/v0.1/randomUser/randomUser.controller.js'
 const router = Router();
 
 router.route("/:any/:query").get(RandomUserGeneratorError)

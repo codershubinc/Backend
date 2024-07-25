@@ -1,9 +1,8 @@
 import { Router } from "express";
 import {
     RandomImageGanarator,
-    RandomImageGeneratorError,
     RandomImageGanaratorQuery
-} from '../../controllers/randomImage/randomImages.controller.js'
+} from  '../../../../controllers/api/v0.1/randomImage/randomImages.controller.js'
 
 const router = Router();
 

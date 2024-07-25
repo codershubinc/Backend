@@ -1,10 +1,10 @@
-import Random from "../../lib/func/Random.js"
-import smallUsers from "../../lib/data/userData0.js"
-import users from "../../lib/data/userData1.js"
-import bigUsers from "../../lib/data/userData2.js"
-import { asyncHandler } from "../../utils/asyncHandler.js"
-import { ApiError } from "../../utils/responce/api/error.api.js"
-import { ApiResponse } from "../../utils/responce/api/responce.api.js"
+import Random from "../../../../lib/func/Random.js"
+import smallUsers from "../../../../lib/data/userData0.js"
+import users from "../../../../lib/data/userData1.js"
+import bigUsers from "../../../../lib/data/userData2.js"
+import { asyncHandler } from "../../../../utils/asyncHandler.js"
+import { ApiError } from "../../../../utils/responce/api/error.api.js"
+import { ApiResponse } from "../../../../utils/responce/api/responce.api.js"
 
 
 const RandomUserGanarator = asyncHandler(async (req, res) => {
