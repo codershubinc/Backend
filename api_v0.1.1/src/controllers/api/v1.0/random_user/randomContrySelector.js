@@ -22,4 +22,4 @@ const loadModule = async (countryCode) => {
     }
 };
 
-export default  loadModule(RandomCountrySelector)
+export default  await loadModule(RandomCountrySelector)
