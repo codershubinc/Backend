@@ -1,6 +1,8 @@
 import { Router } from "express"; 
-import address from "../../../../controllers/api/v1.0/address/address.controllere.js"
+import {code , random} from "../../../../controllers/api/v1.0/address/address.controllere.js"
 const router = Router();
 
-router.route('/:contryCode').get(address)
+router.route('/:contryCode').get(code)
+router.route('/').get(code)
+router.route('/random').get(random)
 export default router

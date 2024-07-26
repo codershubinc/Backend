@@ -1,14 +1,41 @@
 import { asyncHandler } from "../../../../utils/asyncHandler.js";
 import { ApiError } from "../../../../utils/responce/api/error.api.js";
 import { ApiResponse } from "../../../../utils/responce/api/responce.api.js";
-import data from "../../../../lib/func/addressByContryCode.js"
+import Address from "../../../../lib/func/address.js";
 
 
 
-const address = asyncHandler(async (req, res) => {
+const random = asyncHandler(async (req, res) => {
+
+    const addressData = await Address.random()
+    if (!addressData) {
+        return res.status(401).json(
+            new ApiError(
+                401,
+                'Bad Request',
+                [
+                    'Fatal Error',
+                    'Something went wrong',
+                ]
+            )
+        )
+    }
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            addressData,
+            'Successfully fetched random address'
+        )
+
+    )
+})
+const code = asyncHandler(async (req, res) => {
     const { contryCode } = req.params
-    const contryInfo = await data(contryCode)
-    if (!contryInfo) {
+    const addressData = await Address.code(contryCode)
+    if (contryCode==='random') {
+        return random(req, res)
+    }
+    if (!addressData) {
         return res.status(404).json(
             new ApiError(
                 404,
@@ -28,7 +55,8 @@ const address = asyncHandler(async (req, res) => {
                             "GB",
                             "IN",
                             "US",
-                        ]
+                        ] ,
+                        or_you_can_use_random: 'random'
                     }
                 ]
             )
@@ -37,10 +65,13 @@ const address = asyncHandler(async (req, res) => {
     return res.status(200).json(
         new ApiResponse(
             200,
-            contryInfo,
-            'Successfully fetched contry info'
+            addressData,
+            `Successfully fetched random  address in ${contryCode} `
         )
     )
 })
 
-export default address
+export {
+    code,
+    random
+}
